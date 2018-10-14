@@ -1,0 +1,45 @@
+
+#logo {
+  height: 70%;
+  margin-top: -5px;
+}
+#contain {
+
+}
+.top_fix {
+  margin-top: -80px;
+}
+/*
+
+I will show you how to change a height of a standard Bootstrap navbar.
+
+*/
+
+.navbar {
+  min-height: 80px;
+}
+
+.navbar-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+.example-card {
+  max-width: 300px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.iscolored {
+  background-color: darkkhaki;
+}

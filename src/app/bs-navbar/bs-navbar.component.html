@@ -1,0 +1,59 @@
+<nav class="align-top navbar navbar-expand-md navbar-light bg-light sticky-top"
+     style="margin-right: -100px; margin-left: -100px;margin-top: -100px">
+  <div class="container-fluid">
+    <a href="#" class="navbar-brand"><img src="assets/img/header_mbazar.PNG"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a [routerLink]="['/shopping-cart']" class="nav-link" >
+            Panier
+            <span class="badge badge-warning badge-pill">
+              {{shoppingCartItemCount}}
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/aboutUs']" class="nav-link">Qui sommes-nous?</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+        </li>
+        <li ngbDropdown *ngIf="afAuth.user | async as user ; else anonymousUser" class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdownUser"
+             data-toggle="dropdown">{{user.displayName}}</a>
+          <div ngbDropdownMenu class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/my/adverts">Mes annonces</a>
+            <a class="dropdown-item" routerLink="/admin/adverts">Gestion des annonces</a>
+            <a class="dropdown-item" routerLink="/admin/categories">Gestion des catégories</a>
+            <a class="dropdown-item" routerLink="/admin/users">Gestion des utilisateurs</a>
+            <a (click)="onLogout()" style="cursor:pointer" class="dropdown-item">Se deconnecter</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <ng-template #anonymousUser>
+            <a [routerLink]="['/login']" class="nav-link">Connexion</a>
+          </ng-template>
+        </li>
+        <li class="nav-item">
+          <ng-template #anonymousUser$>
+            <button [routerLink]="['/login']" class="btn float-lg-right btn-lg" style=" margin-right:
+          0px;color:#ECEFF1 ; background-color: darkorange" type="submit">Publier une annonce
+            </button>
+          </ng-template>
+        </li>
+        <li *ngIf="isAuth">
+          <a (click)="onLogout()" class="nav-link" style="cursor: pointer">Deconnexion</a>
+        </li>
+        <li *ngIf="isAuth ; else anonymousUser$" class="nav-item">
+          <button [routerLink]="['/user/category-choice/']"
+                  class="btn float-lg-right btn-lg" style=" margin-right:
+          0px;color:#ECEFF1 ; background-color: darkorange" type="submit">Publier une annonce
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

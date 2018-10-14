@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm"(ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="contactName">Prenom</label>
+        <input #contactFirstName="ngModel" [(ngModel)]="contact.contactFirstname" name="contactFirstname" id="contactFirstname" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="contactFirstName.touched && contactFirstName.invalid">Le prénom est réquis</div>
+      </div>
+      <div class="form-group">
+        <label for="contactName">Nom</label>
+        <input #contactName="ngModel" [(ngModel)]="contact.contactName" name="contactName" id="contactName" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="contactName.touched && contactName.invalid">Le nom est réquis</div>
+      </div>
+      <div class="form-group">
+        <label for="contactMessage">Message</label>
+        <textarea #contactMessage="ngModel" [(ngModel)]="contact.contactMessage" name="contactMessage"id="contactMessage"  class="form-control" required>
+    </textarea>
+        <div class="alert alert-danger" *ngIf="contactMessage.touched && contactMessage.invalid">Le message est réquis</div>
+      </div>
+      <div class="form-group">
+        <label for="contactEmail">Email</label>
+        <input #contactEmail="ngModel" [(ngModel)]="contact.contactEmail" name="contactEmail" id="contactEmail" type="text" class="form-control" required email>
+        <div class="alert alert-danger" *ngIf="contactEmail.touched && contactEmail.invalid">
+          <div *ngIf="contactEmail.errors.required">L'image est réquise</div>
+          <div *ngIf="contactEmail.errors.email">Veuillez saisir un mail valide</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="openDialog()">Soumettre</button>
+
+    </form>
+  </div>
+</div>
+

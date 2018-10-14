@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-3">
+    <div class="list-group">
+      <a
+        *ngFor="let c of categories"
+        routerLink="/adverts"
+        (click)="filterExact('category',c.name)"
+        [queryParams]="{ category: c.key }"
+        class="list-group-item list-group-item-action"
+      [class.active]="category === c.key">
+        {{ c.name }}
+      </a>
+    </div>
+  </div>
+
+
+<div class="col">
+  <div class="row">
+      <mat-card *ngFor="let a of filteredAdverts; let i = index">
+        <ng-container >
+        <div class="card" style="width: 10rem;">
+          <img class="card-img-top" [src]="a.imageURL" alt="Card image cap">
+          <div class="card-body">
+          <h4 class="card-title">{{ a.title }}</h4>
+            <p class="card-text">{{ a.description }}</p>
+            <a href="#" class="btn btn-primary">Voir détail</a>
+          </div>
+        </div>
+        </ng-container>
+      </mat-card>
+  </div>
+</div>
+</div>

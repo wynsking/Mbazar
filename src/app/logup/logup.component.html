@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row" id="pwd-container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <section class="login-form">
+        <form [formGroup]="logupForm" (ngSubmit) = "onSubmit()">
+          <input type="text" name="firstname" id="firstname" placeholder="Prénom" formControlName="firstname" class="form-control input-lg"/>
+          <input type="text" name="lastname" id="lastname" placeholder="Nom" formControlName="lastname" class="form-control input-lg"/>
+          <input type="text" name="email" id="email" placeholder="Email" formControlName="email" class="form-control input-lg"/>
+          <input type="password" class="form-control input-lg" id="password" placeholder="Password" formControlName="password" />
+          <div class="pwstrength_viewport_progress"></div>
+          <button type="submit" name="go" class="btn btn-lg btn-primary btn-block" [disabled]="logupForm.invalid">S'inscrire</button>
+        </form>
+        <p class="text-danger"> {{errorMessage}}</p>
+      </section>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+

@@ -1,0 +1,19 @@
+<div>
+  <h5>Mes annonces:</h5>
+  <ul>
+    <h6>Vous pouvez offrir une meilleure visibilité à votre annonce :</h6>
+    <li>Annonce premium </li>
+    <li>Annonce colorée </li>
+  </ul>
+  <h6>Cliquer sur <em>Ajouter dans le panier</em> pour demarrer l'opération</h6>
+</div>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let a of filteredAdverts ; let i = index">
+      <div class="col">
+        <advert-card [advert]="a"></advert-card>
+      </div>
+      <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+  </ng-container>
+  </div>
+</div>

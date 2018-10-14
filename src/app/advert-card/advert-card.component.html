@@ -1,0 +1,18 @@
+<div *ngIf="advert.title" class="card" style="width: 18rem;">
+  <img *ngIf="advert.url" style="height: 15rem" class="card-img-top" [src]="advert.url" alt="{{advert.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{advert.title}}</h5>
+    <p class="card-text">{{advert.description}}</p>
+    <p class="card-text">{{advert.price | currency: 'EUR':true}}</p>
+  </div>
+  <div class="card-footer">
+
+    <button
+      *ngIf="shoppingCartItemCount === 0; else removeFromCart"
+      (click)="addToCart(advert)" class="btn btn-primary btn-block">Ajouter au panier</button>
+    <ng-template #removeFromCart>
+      <button
+        (click)="removeFromCart$(advert)" class="btn btn-primary btn-block">Retirer du panier</button>
+    </ng-template>
+  </div>
+</div>

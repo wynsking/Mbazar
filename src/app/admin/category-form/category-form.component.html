@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-6">
+<!--
+    <form [formGroup]="categoryForm"  (ngSubmit)="save()">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input  type="text" name="name" id="name" [(ngModel)]="category.name" formControlName="name" class="form-control input-group-lg">
+      </div>
+      <div class="form-group">
+        <label for="imageURL">Photos</label>
+        <label class="btn btn-default"> <input name="imageURL" id="imageURL" [(ngModel)]="category.fileUpload.url" formControlName="imageURL"
+                                               class="form-control" url type="file"
+                                               (change)="selectFile($event)">
+        </label>
+      </div>
+
+      <div class="row">
+        <button class="btn btn-primary" [disabled]="!selectedFiles">Enregistrer</button>
+      </div>
+
+    </form>
+-->
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+          Le titre est réquis.
+        </div>
+      </div>
+      <div class="form-group">
+        <div *ngIf="currentFileUpload" class="progress">
+          <div class="progress-bar progress-bar-info progress-bar-striped"
+               role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+               aria-valuemin="0" aria-valuemax="100"
+               [ngStyle]="{width:progress.percentage+'%'}">
+            {{progress.percentage}}%</div>
+        </div>
+        <label for="url" class="btn btn-default"> <input #url="ngModel" ngModel name="url" id="url" type="file"
+                                               (change)="selectFile($event)">
+        </label>
+      </div>
+      <button class="btn btn-primary" [disabled]="!selectedFiles">Enregistrer</button>
+    </form>
+  </div>
+</div>
+

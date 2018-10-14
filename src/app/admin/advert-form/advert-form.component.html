@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="advertForm"  (ngSubmit)="save()">
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input  type="text" name="title" id="title" ngModel formControlName="title" class="form-control input-group-lg">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea type="textarea" name="description" id="description" ngModel formControlName="description"
+                  class="form-control">
+    </textarea>
+      </div>
+      <div class="form-group">
+        <label for="price">Prix</label>
+        <div class="input-group">
+          <span class="input-group-addon">€</span>
+          <input name="price" id="price" ngModel type="number" formControlName="price" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Categorie</label>
+        <select name="category" id="category" ngModel type="select" formControlName="category" class="form-control">
+          <option *ngFor="let c of categories " [value]="c.title">
+            {{c.title}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="url">Photos</label>
+        <label class="btn btn-default"> <input name="url" id="url" ngModel formControlName="url"
+                                               class="form-control" url type="file"
+                                               (change)="selectFile($event)">
+        </label>
+      </div>
+
+      <div class="row">
+        <button class="btn btn-primary" [disabled]="!selectedFiles">Enregistrer</button>
+      </div>
+
+    </form>
+  </div>
+<!--  <div class="col-md-6">
+    <div class="card" style="width: 20rem">
+      <img class="card-img-top" [src]="advert.url" alt="">
+      <div class="card-body">
+      </div>
+    </div>
+  </div>-->
+</div>
+
